@@ -111,9 +111,19 @@ class MusicPlay:
 
 
 	def shuffle(self):
-		size = len(self.files)
-		r = random.randint(0, (size -1))
-		self.play(self.files[r])
+		global db
+		self.files = db.getall()
+		while True:
+			try:
+				one = self.files[0]
+			except:
+				one = None
+			os.system("")
+			size = len(self.files)
+			while True:
+				r = random.randint(0, (size -1))
+				self.play(self.files[r])
+			time.sleep(1)
 
 
 def initDB(db):
